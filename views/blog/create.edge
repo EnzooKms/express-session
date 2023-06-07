@@ -1,0 +1,23 @@
+@layout('layouts/main')
+@set('title', 'main')
+@set('css', ['https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'])
+@set('js', [])
+
+@section('body')
+
+@!component('components/form', { 'method': 'POST', 'form': [
+    {
+        'name': 'Titre',
+        'type': 'text'
+    },
+    {
+        'name': 'Description',
+        'type': 'text'
+    },
+    {
+        'name': 'Titre',
+        'type': 'text'
+    }
+]})
+
+@endsection

@@ -1,0 +1,19 @@
+@layout('layouts/main')
+@set('title', 'main')
+@set('css', ['https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'])
+@set('js', [])
+
+@section('body')
+
+<nav class="navbar navbar-expend-lg bg-primary h-5">
+    @if(user)
+    <h1 class="navbar-brand text-white">Status : connecter en tant que {{user.username}}</h1>
+    <p><a class="text-white navbar-brand" href="/blog/create">Créer un blog</a></p>
+    <h2><a href="/logout" class="navbar-brand text-white">Se deconnectée</a></h2>
+    @else
+    <h1 class="navbar-brand text-white f-5">Status : non connectée</h1>
+    <p class="text-white navbar-toggler"><a class="text-white nav-link" href="/register">Cliquez ici pour créer un compte</a></p>
+    @end
+</nav>
+  
+@endsection

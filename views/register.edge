@@ -1,0 +1,21 @@
+@layout('layouts/main')
+@set('title', 'main')
+@set('css', ['https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'])
+@set('js', [])
+
+@section('body')
+
+@!component('components/formAccount', { 'method': 'POST' })
+
+  <div class="card-body bg-secondary">
+    <h2 ><a href="/login" class="text-danger"> Deja un compte se connecter !</a></h2>
+  </div>
+
+  @if(error == 201)
+  <div class="card-body bg-secondary">
+    <h2 class="text-danger">Un utilisateur utilise deja cette username</h2>
+  </div>
+  @endif
+  
+  
+@endsection

@@ -1,0 +1,14 @@
+<form method={{method}}>
+    @each(data in form)
+     <div class="form-group d-flex flex-column align-items-center">
+        <label class="m-3 text-center" for={{data.name}}>{{data.name}}</label>
+        <input class="w-25 form-control" type={{data.type}} name={{data.name}} id={{data.name}}>
+     </div>
+    @end
+    <div class="d-flex justify-content-center">
+        <div class="w-25 d-flex justify-content-around">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary"><a class="text-white" href="/">Home</a></button>
+        </div>
+    </div>
+</form>
