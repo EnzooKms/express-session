@@ -54,6 +54,7 @@ router.post('/register', async (req, res) => {
             }
             else {
                 res.render('register', { error: 201 })
+                db.close()
             }
 
         })

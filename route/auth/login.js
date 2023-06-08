@@ -36,6 +36,7 @@ router.post('/login', (req, res) => {
             }
 
             if (!data) {
+                db.close()
                 return res.render('login', { error: 201, username: true })
             }
 
@@ -45,8 +46,10 @@ router.post('/login', (req, res) => {
                     req.session.isConnected = true
                     req.session.user = username
                     res.status(200).redirect('/')
+                    db.close()
                 } else {
                     res.render('login', { error: 201, username: false })
+                    db.close()
                 }
             }
         })
