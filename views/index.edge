@@ -15,5 +15,22 @@
     <p class="text-white navbar-toggler"><a class="text-white nav-link" href="/register">Cliquez ici pour créer un compte</a></p>
     @end
 </nav>
+
+@if(error == 401) 
+    <div class="card-body bg-secondary">
+        <h2 class="text-danger">Utilisateur non authentifier</h2>
+      </div>
+@end
+
+<section>
+    @each(el in data)
+    <article>
+        <h2>{{el.title}}</h2>
+        <p>{{el.description}}</p>
+
+        <img src="./uploads/{{el.file}}" alt="">
+    </article>
+    @end
+</section>
   
 @endsection
