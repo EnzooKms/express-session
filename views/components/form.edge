@@ -1,9 +1,25 @@
-<form method={{method}}>
+<form method={{method}} enctype="multipart/form-data">
     @each(data in form)
+    
+    @if(data.type == 'file')
+    <div class="form-group d-flex flex-column align-items-center">
+        <label class="m-3 text-center" for={{data.name}}>{{data.name}}</label>
+        <input accept="image/png, image/gif, image/jpeg" class="w-25 form-control" type={{data.type}} name={{data.name}} id={{data.name}}>
+     </div>
+    @else
+      
+     @if(data.type == 'textarea')
+     <div class="form-group d-flex flex-column align-items-center">
+        <label class="m-3 text-center" for={{data.name}}>{{data.name}}</label>
+        <textarea class="w-25 form-control" type={{data.type}} name={{data.name}} id={{data.name}}></textarea>
+     </div>
+     @else
      <div class="form-group d-flex flex-column align-items-center">
         <label class="m-3 text-center" for={{data.name}}>{{data.name}}</label>
         <input class="w-25 form-control" type={{data.type}} name={{data.name}} id={{data.name}}>
      </div>
+     @end
+    @end
     @end
     <div class="d-flex justify-content-center">
         <div class="w-25 d-flex justify-content-around">
