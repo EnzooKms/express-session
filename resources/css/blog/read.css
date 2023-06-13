@@ -1,0 +1,33 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(62, 62, 66);
+}
+
+article {
+    width: 60vw;
+    height: 80vh;
+    border: solid 2px black;
+    background-color: white;
+    text-align: center;
+}
+
+article h1 {
+    position: absolute;
+    font-size: 3vw;
+    left: 67.5%;
+    transform: translateX(-25%);
+}
+
+article p {
+    margin-top: 6%;
+    max-height: 80%;
+    overflow: auto;
+}
+
+article img {
+    height: 100%;
+    width: 65%;
+    object-fit: cover;
+    float: left;
+}

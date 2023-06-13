@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr-fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <title>{{title}}</title>
+
+  @each(url in css)
+  <link rel="stylesheet" href={{url}}>
+  @endeach
+
+  @each(url in js)
+  <script src={{url}}></script>
+  @end
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand">Express JS</a>
+      @if(user)
+      <div class="navbar-nav btn-group dropstart">
+        <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
+          class="btn btn-secondary dropdown-toggle nav-item">
+          {{ user.username }}
+        </button>
+        <ul class="dropdown-menu mr-3">
+          <li><a href="/profile/{{user.username}}" class="dropdown-item">Acceder au Profil</a></li>
+          <li><a class="dropdown-item" href="/blog/create">Créer un blog</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a href="/logout" class="dropdown-item">Déconnection</a></li>
+
+        </ul>
+      </div>
+      @else
+      <div class="navbar-nav btn-group dropstart">
+        <button type="button" class="btn btn-warning dropdown-toggle nav-item" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Non connecté
+        </button>
+        <ul class="dropdown-menu mr-3">
+          <li><a href="/login" class="dropdown-item">Se connecter</a></li>
+          <li><a href="/register" class="dropdown-item">S'enregister</a></li>
+        </ul>
+      </div>
+      @endif
+    </div>
+  </nav>
+
+
+
+
+
+
+  {{-- <nav class="navbar navbar-expend-lg bg-primary h-5">
+    @if(user)
+    <h1 class="navbar-brand text-white">Status : connecter en tant que {{user.username}}</h1>
+
+    <p><a class="text-white navbar-brand" href="/blog/create">Créer un blog</a></p>
+
+    <h2><a href="/logout" class="navbar-brand text-white">Se deconnectée</a></h2>
+
+    @else
+    <h1 class="navbar-brand text-white f-5">Status : non connectée</h1>
+
+    <div class="btn-group dropleft">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        Non connecté
+      </button>
+      <div class="dropdown-menu">
+        <button class="dropdown-item" type="button">Action</button>
+        <button class="dropdown-item" type="button">Another action</button>
+        <button class="dropdown-item" type="button">Something else here</button>
+      </div>
+    </div>
+    @end
+  </nav> --}}
+
+  @!section('body')
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>

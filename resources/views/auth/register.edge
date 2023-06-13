@@ -1,0 +1,18 @@
+@layout('layouts/main')
+@set('title', 'register')
+@set('css', ['https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'])
+@set('js', [])
+
+@section('body')
+
+<div class="container mt-4">
+
+  @!component('components/formAccount', { 'method': 'POST', 'error': error })
+
+  <div class="alert alert-primary mt-5" role="alert">
+    <a href="/login">Deja un compte se connecter !</a>
+  </div>
+
+</div>
+
+@endsection

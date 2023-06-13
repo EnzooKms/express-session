@@ -1,0 +1,28 @@
+@layout('layouts/main')
+@set('title', 'main')
+@set('css', ['resources/css/style.css'])
+@set('js', [])
+
+@section('body')
+
+@if(error == 401)
+<div class="card-body bg-secondary">
+    <h2 class="text-danger">Utilisateur non authentifier</h2>
+</div>
+@end
+
+<section>
+    @each(el in data)
+    <article>
+        <a href="/blog/read/{{el.id}}">
+            <h2>{{el.title}}</h2>
+            <p>{{el.description}}</p>
+
+            <small>Créer par : {{el.author}}</small>
+            <img src="./uploads/{{el.file}}" alt="">
+        </a>
+    </article>
+    @end
+</section>
+
+@endsection

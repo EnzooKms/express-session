@@ -1,0 +1,20 @@
+<form method={{method}} autocomplete="on">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input name="username" type="text" class="form-control" id="username" aria-describedby="username">
+  </div>
+
+  @if(error == 201)
+  <div class="alert alert-danger" role="alert">
+    Un utilisateur utilise deja cette username
+  </div>
+  @endif
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input name="password" type="password" class="form-control" id="password">
+    <small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button class="btn btn-primary"><a class="text-white" href="/">Home</a></button>
+</form>

@@ -20,7 +20,7 @@ router.use(session({
 }))
 
 router.get('/login', (req, res) => {
-    res.render('login')
+    res.render('auth/login')
 })
 
 router.post('/login', (req, res) => {
@@ -37,7 +37,7 @@ router.post('/login', (req, res) => {
 
             if (!data) {
                 db.close()
-                return res.render('login', { error: 201, username: true })
+                return res.render('auth/login', { error: 201, username: true })
             }
 
             if (data.username && data.password) {
@@ -48,7 +48,7 @@ router.post('/login', (req, res) => {
                     res.status(200).redirect('/')
                     db.close()
                 } else {
-                    res.render('login', { error: 201, username: false })
+                    res.render('auth/login', { error: 201, username: false })
                     db.close()
                 }
             }

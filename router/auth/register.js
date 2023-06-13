@@ -21,7 +21,7 @@ router.use(session({
 }))
 
 router.get('/register', (req, res) => {
-    res.render('register')
+    res.render('auth/register')
 })
 
 router.post('/register', async (req, res) => {
@@ -31,10 +31,6 @@ router.post('/register', async (req, res) => {
     const hash = await bcrypt.hash(password, gen)
 
     db.serialize(() => {
-        const CREATE = db.prepare('CREATE TABLE IF NOT EXISTS users (username VARCHAR(255), password VARCHAR(255), uuid VARCHAR(255))')
-
-        CREATE.run()
-        CREATE.finalize()
 
         db.get(`SELECT * FROM users WHERE username = "${username}"`, (err, data) => {
             if (err) {
@@ -47,13 +43,10 @@ router.post('/register', async (req, res) => {
                 INSERT.finalize()
 
                 db.close()
-
-                req.session.isConnected = true
-                req.session.user = username
-                res.status(201).redirect('/')
+                res.status(201).redirect('/login')
             }
             else {
-                res.render('register', { error: 201 })
+                res.render('auth/register', { error: 201 })
                 db.close()
             }
 

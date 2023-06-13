@@ -31,10 +31,6 @@ router.post('/blog/create', upload.single('image'), (req, res) => {
     const db = new sqlite3.Database('./db.sqlite3')
 
     db.serialize(() => {
-        const CREATE = db.prepare('CREATE TABLE IF NOT EXISTS blogs (title VARCHAR(255), description VARCHAR(255),  file VARCHAR(255), author VARCHAR(255), FOREIGN KEY(author) REFERENCES users(username))')
-
-        CREATE.run()
-        CREATE.finalize()
 
         const upload = db.prepare('INSERT INTO blogs(title, description, file, author) VALUES ((?), (?), (?), (?))', [title, description, req.file.filename, req.session.user])
         upload.run()

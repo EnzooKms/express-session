@@ -5,16 +5,21 @@ const port = 3030
 const engine = require('express-edge');
 const session = require('express-session')
 const sqlite3 = require('sqlite3')
-const { router: login } = require('./route/auth/login')
-const { router: register } = require('./route/auth/register')
-const { router: blogCreate } = require('./route/blogs/create')
+require('./createTable')
+const { router: login } = require('./router/auth/login')
+const { router: register } = require('./router/auth/register')
+const { router: blogCreate } = require('./router/blogs/create')
+const { router: blogRead } = require('./router/blogs/read')
+const { router: profile } = require('./router/profile/profile')
 
 app.use(login)
 app.use(register)
 app.use(blogCreate)
+app.use(blogRead)
+app.use(profile)
 // Automatically sets view engine and adds dot notation to app.render
 app.use(engine);
-app.set('views', `${__dirname}/views`);
+app.set('views', `${__dirname}/resources/views`);
 
 
 const sass = require('node-sass-middleware');

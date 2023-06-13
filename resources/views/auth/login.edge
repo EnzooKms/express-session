@@ -1,0 +1,22 @@
+@layout('layouts/main')
+@set('title', 'login')
+@set('css', ['https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'])
+@set('js', [])
+
+@section('body')
+
+<div class="container">
+  @!component('components/formAccount', { 'method': 'POST' })
+
+  <div class="alert alert-primary mt-5" role="alert">
+    <a href="/register">Pas de compte s'enregister !</a>
+  </div>
+
+  @if(error == 201)
+  <div class="alert alert-primary mt-5" role="alert">
+    <h2 class="text-danger">Identifiants incorrects</h2>
+  </div>
+  @endif
+</div>
+
+@endsection
